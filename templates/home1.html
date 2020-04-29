@@ -1,0 +1,273 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Welcome</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script src={{ url_for('static', filename='js/thumbnail-slider.js') }}></script>
+<link rel="stylesheet" href={{ url_for('static', filename='css/thumbnail-slider.css') }} />
+<link rel="stylesheet" href={{ url_for('static', filename='css/home.css') }} />
+<!--<link rel="stylesheet" href={{ url_for('static', filename='css/topStyle.css') }} />-->
+<!--<link rel="stylesheet" href={{ url_for('static', filename='css/set1.css') }} />-->
+<link rel="stylesheet" href={{ url_for('static', filename='css/demo.css') }} />
+<link rel="stylesheet" href={{ url_for('static', filename='css/normalize.css') }} />
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" type="text/css" href="static/css/component.css">
+    <script src="https://kit.fontawesome.com/29850fdfef.js" crossorigin="anonymous"></script>
+<style>
+.button {
+    background-color: white;
+    border-color: #555555;
+    width:95%;
+    color: black;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.button:hover {
+    background-color: #555555;
+    color: white;
+}
+body {
+    background-image: url('https://ordinaryfaith.net/wp-content/uploads/2016/03/Gray-plain-website-background.jpg');
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.topnav a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+
+header {display:block; font-size:1.2em;margin-bottom:100px;}
+    header a, header span {
+        display: inline-block;
+        padding: 4px 8px;
+        margin-right: 10px;
+        border: 2px solid #000;
+        background: #DDD;
+        color: #000;
+        text-decoration: none;
+        text-align: center;
+        height: 20px;
+    }
+    header span {background:white;}
+    a {color: #1155CC;}
+
+
+.topnav-right {
+    float: right;
+}
+
+.overlay {
+    position: absolute;
+    background: rgb(0, 0, 0);
+    background: rgba(255, 255, 255, 0.5); /* Black see-through */
+    color: #f1f1f1;
+    width: 100%;
+    height: 10%;
+    transition: .5s ease;
+    opacity:0;
+    color: black;
+    font-size: auto;
+    padding: 20px;
+    text-align: center;
+}
+
+/* When you mouse over the container, fade in the overlay title */
+.column:hover .overlay {
+  opacity: 1;
+}
+
+</style>
+<script>
+function init(){
+    console.log("in Init");
+    ob = new obj();
+    ob.getproducts();
+    setInterval(ob.getproducts, 120000);
+}
+
+function obj(){
+    this.getproducts = function(){
+        console.log('in getProducts');
+        ob.clearproducts();
+        console.log('Cleared');
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET','/getproducts',true);
+        xhr.onreadystatechange = ob.setproducts;
+        xhr.send();
+    },
+    this.setproducts = function(){
+        if(this.status==200 && this.readyState==4){
+            console.log('in setProducts');
+            if(JSON.parse(this.responseText)['msg']=='Empty'){
+            }
+            else{
+                var df = JSON.parse(this.responseText);
+                console.log(df);
+                tabl=document.getElementById('items');
+                for(var j=0;j<Object.keys(df).length;j++){
+                    row=document.createElement('div');
+                    row.style="text-align:center; font-weight:bold;height: 250px;"
+                    row.classList.value="row"
+                    for(i=0;i<5;i++){
+                        data = JSON.parse(df[j]);
+
+                        column = document.createElement('div');
+                        a1 = document.createElement('a')
+                        im = document.createElement('img');
+                        a1.href='/productDescription?productId='+data['pid'];
+                        im.src='static/uploads/'+data['path'];
+                        im.alt=data['name'];
+                        im.style="width:100%;height:300px;"
+                        a1.appendChild(im);
+                        title = document.createElement('div');
+                        price = document.createElement('div');
+                        title.classList.value = 'overlay';
+                        price.classList.value = 'overlay';
+                        spa1 = document.createElement('span');
+                        spa2 = document.createElement('span');
+                        spa1.innerHTML = data['name'];
+                        spa2.innerHTML = data['price'];
+                        price.style="bottom: 0%;"
+                        title.appendChild(spa1);
+                        price.appendChild(spa2);
+                        title.style="top: 0%;"
+                        column.appendChild(a1);
+                        a1.appendChild(title);
+                        a1.appendChild(price);
+                        column.style="float: left;padding: 5px;width: 20%;position: relative;";
+                        column.classList.value="column";
+                        row.appendChild(column);                    
+                        j++;
+                    }
+                    tabl.appendChild(row);
+                }
+            }
+        }
+    },
+    this.clearproducts = function(){
+        const myNode = document.getElementById("items");
+        while (myNode.firstChild) {
+            myNode.removeChild(myNode.lastChild);
+  }
+    }
+}
+
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+}
+
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
+}
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("button").click(function(){
+    $("#div1").fadeIn(slow);
+
+  });
+});
+
+
+
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+	$(document).ready(function() {
+    $("#b").animate({left: "+=500"}, 2000);
+    $("#b").animate({left: "-=300"}, 1000);
+});
+
+$(document).ready(function(){
+  $("p").hover(function(){
+    $(this).css("background-color", "yellow");
+    }, function(){
+    $($this).css("background-color", "pink");
+  });
+});
+
+$(document).ready(function(){
+  $("#column").click(function(){
+    $("#column").animate({height: "300px"});
+  });
+  $("#column").click(function(){
+    $("#column").animate({height: "100px"});
+  });
+});
+</script>
+
+</head>
+<body onload="init()">
+    
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top" style="z-index:3;width:250px" id="mySidebar">
+  <div class="w3-container w3-display-container w3-padding-16" onclick="window.location.replace('/')">
+    <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
+      <h3 class="w3-wide class1" href="/"><b>Amazon Services</b></h3>
+  </div>
+    {% if not loggedIn %}
+    <div id="login">
+        <a href="/loginForm"><button class="button" id="loginbtn" style="border-color:#555555;">Log In</button></a>
+    </div>
+    {% else %}
+    <div id="login">
+        <div class="dropdown">
+		<button class="button" style="width: 100%;border: 0px;" id="loginbtn1">Hello, {{firstName}}</button>
+		<div id="dropdown-content" style="display: block">
+			<a href="/account/profile" class="w3-bar-item w3-button">Your profile</a>
+			<hr>
+			<a href="/logout" class="w3-bar-item w3-button">Sign Out</a>
+		</div>
+	</div>        
+    </div>
+    {% endif %}
+  <a href="#footer" class="w3-bar-item w3-button w3-padding">Contact</a> 
+  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding" onclick="document.getElementById('newsletter').style.display='block'">Newsletter</a> 
+  <a href="#footer"  class="w3-bar-item w3-button w3-padding">Subscribe</a>
+</nav>
+<header class="w3-bar w3-top w3-hide-large w3-black w3-xlarge">
+  <div class="w3-bar-item w3-padding-24 w3-wide" href="/">Amazon Services</div>
+    <a href="/cart" class="w3-bar-item w3-button w3-padding-24 w3-right"><i class="fa fa-shopping-cart"></i></a>
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-24 w3-right" onclick="w3_open()"><i class="fa fa-bars"></i></a>
+</header>
+<div>
+  <a><img src={{url_for('static', filename='images/am.PNG')}} style="width: 100%;" /></a>
+</div>
+<div>
+<a><img src={{url_for('static', filename='images/a.PNG')}} style="width: 100%;" /></a>
+</div>
+<!-- Overlay effect when opening sidebar on small screens -->
+
+
+<div>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Edit Profile </title>
+<link rel="stylesheet" href={{ url_for('static', filename='css/editProfile.css') }} />
+<link rel="stylesheet" href={{ url_for('static', filename='css/topStyle.css') }} />
+<link rel="stylesheet" href={{ url_for('static', filename='css/style.css') }} />
+
+<style>
+	body {
+		background-image: url('https://ordinaryfaith.net/wp-content/uploads/2016/03/Gray-plain-website-background.jpg');
+	  margin: 0;
+	  font-family: Arial, Helvetica, sans-serif;
+	}
+	</style>
+</head>
+<body>
+<div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	
+</div>
+</div>
+    <div class="login-page">
+        <div class="form">
+		<h2>Edit profile</h2>
+		<form action="/updateProfile" method="POST">
+		<p>Email:<input type="email" name="email" value={{profileData[1]}} readonly="readonly"></p>
+		<p>First Name:<input type="text" name="firstName" value={{profileData[2]}}></p>
+		<p>Last Name: <input type="text" name="lastName" value={{profileData[3]}}></p>
+		<p>Address 1: <input type="text" name="address1" value={{profileData[4]}}></p>
+		<p>Address 2: <input type="text" name="address2" value={{profileData[5]}}></p>
+		<p>Zip Code: <input type="text" name="zipcode" value={{profileData[6]}}></p>
+		<p>City: <input type="text" name="city" value={{profileData[7]}}></p>
+		<p>State: <input type="text" name="state" value={{profileData[8]}}></p>
+		<p>Country: <input type="text" name="country" value={{profileData[9]}}></p>
+		<p>Phone Number: <input type="text" name="phone" value={{profileData[10]}}></p>
+		<input type="submit" value="Save">
+	</form>
+</div>
+</div>
+</body>
+</html>
