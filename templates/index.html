@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block header %}
+<div class="navbar-brand">
+  <a class="navbar-item" href="#" style="color: white">
+    <img src="azlogo.png" alt="Amazon">
+  </a>
+  <span class="navbar-burger" data-target="navMenu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </span>
+</div>
+<div id="navMenu" class="navbar-menu">
+  <div class="navbar-start">
+    <a href="#about" class="navbar-item">Home</a>
+    <a href="#features" class="navbar-item">Features</a>
+  </div>
+  <div class="navbar-end">
+    <div class="navbar-item">
+      <div class="buttons">
+        <a class="button is-dark"> <strong>Sign up</strong> </a>
+        <a class="button is-light">Log in</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block body %}
+<section id="about" class="section">
+  <div class="notification is-success" style="height:30em">Section A</div>
+</section>
+<section id="features" class="section">
+  <div class="notification is-warning" style="height:30em">Section B</div>
+</section>
+{% endblock %}
+
+{% block footer %}
+<div class="navbar-item">
+  <div class="container has-text-centered has-text-white">
+    <div class="columns" style= "min-height:150px">
+      <div class="column">
+          <h1>LOGO</h1>
+      </div>
+      <div class="column">
+        <a href="#" style="color:white">Link</a>
+      </div>
+      <div class="column">
+        <a href="#" style="color:white">Link</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
