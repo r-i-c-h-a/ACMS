@@ -9,3 +9,7 @@ def index():
 @app.route("/registration")
 def usReg():
     return render_template("userRegistration.html")
+
+@app.route("/product_details")
+def prodDet():
+    return render_template("productDetails.html")
