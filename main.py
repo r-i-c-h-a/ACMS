@@ -191,5 +191,52 @@ def parse(data):
         ans.append(curr)
     return ans
 
+@app.route("/account/list_ecommerce",methods=['GET'])
+def list_ecomm():
+    if 'email' not in session:
+        return redirect(url_for('root'))
+    with sqlite3.connect('database.db') as conn:
+        cur = conn.cursor()
+        cur.execute("SELECT name,link from ecomm;")
+        ecommData = cur.fetchall()
+    conn.close()
+    return render_template("list_ecommerces.html", ecommData=ecommData)
+
+@app.route("/registration",methods=['GET'])
+def usReg():
+    if 'email' not in session:
+        return redirect(url_for('root'))
+    loggedIn, firstName= getLoginDetails()
+    return render_template("userRegistration.html", firstName=firstName)
+
+@app.route("/account/list_ecommerce",methods=['POST'])
+def update_ecomm():
+    if 'email' not in session:
+        return redirect(url_for('root'))
+    ecomm_list=request.get_json()
+    ecomm_list=ecomm_list['companies']
+    with sqlite3.connect('database.db') as conn:
+        cur = conn.cursor()
+        cur.execute("UPDATE users SET ecomm_names= ? WHERE email = ?",(str(ecomm_list),session['email']))
+        conn.commit()
+        msg="update ecommerce list successfully"
+    conn.close()
+
+    return render_template("home1.html", msg=msg)   #need to redirect to the desired page
+
+@app.route("/registration",methods=['POST'])
+def update_company():
+    if 'email' not in session:
+        return redirect(url_for('root'))
+    company_name=request.form['cname']
+    with sqlite3.connect('database.db') as conn:
+        cur = conn.cursor()
+        cur.execute("UPDATE users SET company_name= ? WHERE email = ?",(company_name,session['email']))
+        conn.commit()
+        msg="updated company name successfully"
+    conn.close()
+
+    return render_template("home1.html", msg=msg)   #need to redirect to the desired page
+
 if __name__ == '__main__':
     app.run(debug=True,port=4000)
