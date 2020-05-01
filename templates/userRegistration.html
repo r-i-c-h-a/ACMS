@@ -175,16 +175,16 @@
 </div>
 <div id="navMenu" class="navbar-menu">
   <div class="navbar-start">
-    <a href="#about" class="navbar-item">Home</a>
+    <a href="/" class="navbar-item">Home</a>
     <a href="#products" class="navbar-item">Products</a>
   </div>
   <div class="navbar-end">
     <div class="navbar-item has-dropdown is-hoverable">
-      <a class="navbar-link">Yogya</a>
+      <a class="navbar-link">{{firstName}}</a>
       <div class="navbar-dropdown">
         <a class="navbar-item">Profile</a>
         <a class="navbar-item">Report bug</a>
-        <a class="navbar-item">Sign Out</a>
+        <a href="/logout" class="navbar-item">Sign Out</a>
       </div>
     </div>
   </div>
@@ -201,7 +201,7 @@
 <div id="Company_Business_name">
   <span>Company/Business name</span>
 </div>
-<form>
+<form action="/registration" method="POST">
   <div id="Input_Field">
     <input type="text" placeholder="company name" name="cname">
   </div>
