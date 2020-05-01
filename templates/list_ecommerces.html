@@ -9,16 +9,14 @@
 
     <h1>Register E-Commerce Websites</h1>
 
-    <!-- TO DO : Get list of E-Commerce Websites for the backend -->
+    <form action="">   
 
-    <form action="">
-        <input type="checkbox" id="item1" name="item1" value="listitem1">
-        <label for="ecommerce"> E Commerce 1</label><br>
-        <input type="checkbox" id="item2" name="item2" value="listitem2">
-        <label for="ecommerce"> E Commerce 2</label><br>
-        <input type="checkbox" id="item3" name="item3" value="listitem3">
-        <label for="ecommerce"> E Commerce 3</label><br><br>
-        <input type="submit" value="Submit">
+            {% for item in ecommData %}
+                <input type="checkbox" id="item3" name="item3" value="listitem3">
+                <label><a href="{{item[1]}}"> {{item[0]}} </a></label> <br />
+            {% endfor %}
+
+        <input type="submit" value="Submit">        
     </form>
 
     <!-- TO-DO : Post the list of e-commerce websites the seller is interested in. -->
