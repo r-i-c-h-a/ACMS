@@ -238,5 +238,12 @@ def update_company():
 
     return render_template("home1.html", msg=msg)   #need to redirect to the desired page
 
+@app.route("/product", methods=['GET'])
+def proDet():
+    if 'email' not in session:
+        return redirect(url_for('root'))
+    loggedIn, firstName= getLoginDetails()
+    return render_template("productDetails.html", firstName=firstName)
+
 if __name__ == '__main__':
     app.run(debug=True,port=4000)

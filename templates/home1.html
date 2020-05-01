@@ -157,7 +157,7 @@ function obj(){
                         a1.appendChild(price);
                         column.style="float: left;padding: 5px;width: 20%;position: relative;";
                         column.classList.value="column";
-                        row.appendChild(column);                    
+                        row.appendChild(column);
                         j++;
                     }
                     tabl.appendChild(row);
@@ -222,7 +222,7 @@ $(document).ready(function(){
 
 </head>
 <body onload="init()">
-    
+
 <!-- Sidebar/menu -->
 <nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top" style="z-index:3;width:250px" id="mySidebar">
   <div class="w3-container w3-display-container w3-padding-16" onclick="window.location.replace('/')">
@@ -239,14 +239,15 @@ $(document).ready(function(){
 		<button class="button" style="width: 100%;border: 0px;" id="loginbtn1">Hello, {{firstName}}</button>
 		<div id="dropdown-content" style="display: block">
 			<a href="/account/profile" class="w3-bar-item w3-button">Your profile</a>
+      <a href="/registration" class="w3-bar-item w3-button">Register Company</a>
 			<hr>
 			<a href="/logout" class="w3-bar-item w3-button">Sign Out</a>
 		</div>
-	</div>        
+	</div>
     </div>
     {% endif %}
-  <a href="#footer" class="w3-bar-item w3-button w3-padding">Contact</a> 
-  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding" onclick="document.getElementById('newsletter').style.display='block'">Newsletter</a> 
+  <a href="#footer" class="w3-bar-item w3-button w3-padding">Contact</a>
+  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding" onclick="document.getElementById('newsletter').style.display='block'">Newsletter</a>
   <a href="#footer"  class="w3-bar-item w3-button w3-padding">Subscribe</a>
 </nav>
 <header class="w3-bar w3-top w3-hide-large w3-black w3-xlarge">
