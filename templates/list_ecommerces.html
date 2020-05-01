@@ -1,27 +1,235 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register E-Commerces</title>
-</head>
-<body>
+{% extends "layout.html" %}
 
-    <h1>Register E-Commerce Websites</h1>
+{% block title %}User Registration{% endblock %}
 
-    <!-- TO DO : Get list of E-Commerce Websites for the backend -->
+{% block header %}
+<style>
+  #Heading {
+    display: flex;
+    flex-wrap: wrap;
+    filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+    position: absolute;
+    left: 5%;
+    top: 12%;
+    overflow: visible;
+    text-align: left;
+    font-family: Helvetica Neue;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    color: rgba(229,133,38,0.827);
+  }
+  #Subhead {
+    display: flex;
+    flex-wrap: wrap;
+		position: absolute;
+		left: 5%;
+		top: 22%;
+		overflow: visible;
+		width: 599px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Arial;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 15px;
+		color: rgba(1,10,18,0.969);
+	}
+	#Company_Business_name {
+		position: absolute;
+		left: 5%;
+		top: 30%;
+		overflow: visible;
+		width: 339px;
+		height: 36px;
+		text-align: left;
+		font-family: Arial;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 15px;
+		color: rgba(52,69,83,1);
+	}
+  #Input_Field {
+    position: absolute;
+    width: 400px;
+    height: 65px;
+    left: 5%;
+    top: 35%;
+    overflow: visible;
+  }
+  #Radio_Button {
+		position: absolute;
+		width: 70px;
+		height: 25px;
+		left: 5%;
+		top: 50%;
+		overflow: visible;
+	}
+	#tnc {
+		position: absolute;
+		left: 6%;
+		top: 50%;
+		overflow: visible;
+		width: 407px;
+		white-space: nowrap;
+		line-height: 20px;
+		margin-top: -1px;
+		text-align: center;
+		font-family: Helvetica;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 15px;
+		color: rgba(13,2,2,1);
+	}
+  #Cont {
+		position: absolute;
+		width: 170px;
+		height: 45px;
+		left: 5%;
+		top: 65%;
+		overflow: visible;
+	}
 
-    <form action="">
-        <input type="checkbox" id="item1" name="item1" value="listitem1">
-        <label for="ecommerce"> E Commerce 1</label><br>
-        <input type="checkbox" id="item2" name="item2" value="listitem2">
-        <label for="ecommerce"> E Commerce 2</label><br>
-        <input type="checkbox" id="item3" name="item3" value="listitem3">
-        <label for="ecommerce"> E Commerce 3</label><br><br>
-        <input type="submit" value="Submit">
-    </form>
+  input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  font-size:15px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  }
+
+  button {
+  background-color: #000000;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+  font-family: Helvetica Neue;
+  font-size: 15px;
+  letter-spacing: 2px;
+  }
+
+  .container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.container input { /* Hide the browser's default radio button */
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+.checkmark { /* Create a custom radio button */
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+.container:hover input ~ .checkmark { /* On mouse-over, add a grey background color */
+  background-color: #ccc;
+}
+.container input:checked ~ .checkmark { /* When the radio button is checked, add a blue background */
+  background-color: #000000;
+}
+.checkmark:after { /* Create the indicator (the dot/circle - hidden when not checked) */
+  content: "";
+  position: absolute;
+  display: none;
+}
+.container input:checked ~ .checkmark:after { /* Show the indicator (dot/circle) when checked */
+  display: block;
+}
+.container .checkmark:after { /* Style the indicator (dot/circle) */
+  top: 6px;
+  left: 6px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+}
+</style>
+<div class="navbar-brand">
+  <a class="navbar-item" href="#" style="color: white">
+    <img src="../static/images/azlogo.png" alt="Amazon">
+  </a>
+  <span class="navbar-burger" data-target="navMenu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </span>
+</div>
+<div id="navMenu" class="navbar-menu">
+  <div class="navbar-start">
+    <a href="#about" class="navbar-item">Home</a>
+    <a href="#products" class="navbar-item">Products</a>
+  </div>
+  <div class="navbar-end">
+    <div class="navbar-item has-dropdown is-hoverable">
+      <a class="navbar-link">Yogya</a>
+      <div class="navbar-dropdown">
+        <a class="navbar-item">Profile</a>
+        <a class="navbar-item">Report bug</a>
+        <a class="navbar-item">Sign Out</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block body %}
+<div id="Heading">
+    <span>Interested E-Commerce</span>
+</div>
+<div id="Subhead">
+    <span>You will be able to sell products on these websites</span>
+</div>
+<div id="Company_Business_name">
+    <span>Select interested E-Commerce Websites </span>
+</div>
+<form> 
+    <div id="Input_Field">
+        {% for item in ecommData %}    
+            <input type="checkbox" id="item3" name="item3" value="listitem3">
+            <label><a href="//{{item[1]}}"> {{item[0]}} </a></label>  <br>
+        {% endfor %}
+    </div>
+</form>
+<div id="Cont">
+    <button type="submit">Continue</button>
+  </div>
+{% endblock %}
 
     <!-- TO-DO : Post the list of e-commerce websites the seller is interested in. -->
 
-</body>
-</html>
+{% block footer %}
+<div class="navbar-item">
+    <div class="container has-text-centered has-text-white">
+    <div class="columns" style= "min-height:50px">
+        <div class="column" style="color:white; font-size:15px">
+            <h1>LOGO</h1>
+        </div>
+        <div class="column">
+        <a href="#" style="color:white; font-size:15px">Link</a>
+        </div>
+        <div class="column">
+        <a href="#" style="color:white; font-size:15px">Link</a>
+        </div>
+    </div>
+    </div>
+</div>
+{% endblock %}
