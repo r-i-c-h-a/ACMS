@@ -49,6 +49,29 @@
 		font-size: 15px;
 		color: rgba(52,69,83,1);
 	}
+
+  #Cont {
+    position: absolute;
+    width: 170px;
+    height: 45px;
+    left: 5%;
+    top: 65%;
+    overflow: visible;
+  }
+  button {
+  background-color: #000000;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+  font-family: Helvetica Neue;
+  font-size: 15px;
+  letter-spacing: 2px;
+  }
+
 /*the container must be positioned relative:*/
 .custom-select {
   position: relative;
@@ -127,16 +150,16 @@
 </div>
 <div id="navMenu" class="navbar-menu">
   <div class="navbar-start">
-    <a href="#about" class="navbar-item">Home</a>
+    <a href="/" class="navbar-item">Home</a>
     <a href="#products" class="navbar-item">Products</a>
   </div>
   <div class="navbar-end">
     <div class="navbar-item has-dropdown is-hoverable">
-      <a class="navbar-link">Yogya</a>
+      <a class="navbar-link">{{firstName}}</a>
       <div class="navbar-dropdown">
-        <a class="navbar-item">Profile</a>
+        <a href="/account/profile" class="navbar-item">Profile</a>
         <a class="navbar-item">Report bug</a>
-        <a class="navbar-item">Sign Out</a>
+        <a href="/logout" class="navbar-item">Sign Out</a>
       </div>
     </div>
   </div>
@@ -179,6 +202,12 @@
   <div id="Company_Business_name">
     <span>Give address of your company</span>
   </div>
+  <div id="Cont">
+    <a href="/account/list_ecommerce">
+      <button type="submit">Continue</button>
+    </a>
+  </div>
+
 
 </section>
 

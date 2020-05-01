@@ -182,7 +182,7 @@
     <div class="navbar-item has-dropdown is-hoverable">
       <a class="navbar-link">{{firstName}}</a>
       <div class="navbar-dropdown">
-        <a class="navbar-item">Profile</a>
+        <a href="/account/profile" class="navbar-item">Profile</a>
         <a class="navbar-item">Report bug</a>
         <a href="/logout" class="navbar-item">Sign Out</a>
       </div>
@@ -216,7 +216,9 @@
   <span>I have read and i agree to the terms and conditions</span>
 </div>
 <div id="Cont">
-  <button type="submit">Continue</button>
+  <a href="/product">
+    <button type="submit">Continue</button>
+  </a>
 </div>
 {% endblock %}
 
