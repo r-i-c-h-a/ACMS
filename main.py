@@ -37,7 +37,7 @@ def profileHome():
     if 'email' not in session:
         return redirect(url_for('root'))
     loggedIn, firstName= getLoginDetails()
-    return render_template("profileHome.html", loggedIn=loggedIn, firstName=firstName)
+    return render_template("profilehome1.html", loggedIn=loggedIn, firstName=firstName)
 
 @app.route("/account/profile/edit")
 def editProfile():
@@ -72,13 +72,13 @@ def changePassword():
                 except:
                     conn.rollback()
                     msg = "Failed"
-                return render_template("changePassword.html", msg=msg)
+                return render_template("changePassword1.html", msg=msg)
             else:
                 msg = "Wrong password"
         conn.close()
-        return render_template("changePassword.html", msg=msg)
+        return render_template("changePassword1.html", msg=msg)
     else:
-        return render_template("changePassword.html")
+        return render_template("changePassword1.html")
 
 @app.route("/updateProfile", methods=["GET", "POST"])
 def updateProfile():
