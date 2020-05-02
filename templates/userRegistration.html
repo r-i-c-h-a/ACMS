@@ -57,7 +57,7 @@
     top: 30px;
     overflow: visible;
   }
-  #Radio_Button {
+  .Radio_Button {
 		position: relative;
 		width: 500px;
 		height: 40px;
@@ -65,10 +65,8 @@
 		top: 30px;
 		overflow: visible;
 	}
-  #hide{
-
-
-}
+  #hide{}
+  #haveGST{}
   #Cont {
 		position: relative;
 		width: 120px;
@@ -197,7 +195,7 @@
         <input type="text" placeholder="company name" name="cname">
       </div>
     </form>
-    <div id="Radio_Button">
+    <div class="Radio_Button">
       <label class="container">
         <input type="radio" name="radio">
         <span class="checkmark"></span>
@@ -217,14 +215,14 @@
     <div id="Heading">
       <span>Update your Tax details</span>
     </div>
-    <div id="Radio_Button">
+    <div class="Radio_Button">
       <label class="container">
-        <input type="radio" name="radio">
+        <input  id="haveGST" type="radio" onclick="javascript:yesnoCheck();" name="radio">
         <span class="checkmark"></span>
         <label for="radio" style="font-size: 15px;">I have GST number</label>
       </label>
     </div>
-    <div id="hide" hidden>
+    <div id="hide" style="display:none">
       <div id="Company_Business_name">
         <span>GST Number</span>
       </div>
@@ -241,12 +239,12 @@
           <input type="text" placeholder="building, area, city, state" name="adress">
         </div>
       </form>
-      <div id="Radio_Button">
+      <div class="Radio_Button">
         <input type="checkbox" name="other">
         <label for="other">My Product is not present in the category</label>
       </div>
     </div>
-    <div id="Radio_Button">
+    <div class="Radio_Button">
       <label class="container">
         <input type="radio" name="radio">
         <span class="checkmark"></span>
@@ -278,4 +276,16 @@
     </div>
   </div>
 </div>
+{% endblock %}
+
+{% block script %}
+<script>
+  function yesnoCheck() {
+      if (document.getElementById('haveGST').checked) {
+          document.getElementById('hide').style.display = 'block';
+      } else {
+          document.getElementById('hide').style.display = 'none';
+      }
+    }
+</script>
 {% endblock %}
