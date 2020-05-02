@@ -8,9 +8,9 @@
     display: flex;
     flex-wrap: wrap;
     filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
-    position: absolute;
-    left: 5%;
-    top: 12%;
+    position: relative;
+    left: 50px;
+    top: 5px;
     overflow: visible;
     text-align: left;
     font-family: Helvetica Neue;
@@ -22,9 +22,9 @@
   #Subhead {
     display: flex;
     flex-wrap: wrap;
-		position: absolute;
-		left: 5%;
-		top: 22%;
+    position: relative;
+		left: 50px;
+		top: 20px;
 		overflow: visible;
 		width: 599px;
 		white-space: nowrap;
@@ -36,9 +36,9 @@
 		color: rgba(1,10,18,0.969);
 	}
 	#Company_Business_name {
-		position: absolute;
-		left: 5%;
-		top: 30%;
+    position: relative;
+		left: 50px;
+		top: 30px;
 		overflow: visible;
 		width: 339px;
 		height: 36px;
@@ -50,43 +50,28 @@
 		color: rgba(52,69,83,1);
 	}
   #Input_Field {
-    position: absolute;
+    position: relative;
     width: 400px;
     height: 65px;
-    left: 5%;
-    top: 35%;
+    left: 50px;
+    top: 30px;
     overflow: visible;
   }
   #Radio_Button {
-		position: absolute;
-		width: 70px;
-		height: 25px;
-		left: 5%;
-		top: 50%;
+		position: relative;
+		width: 500px;
+		height: 40px;
+		left: 50px;
+		top: 30px;
 		overflow: visible;
 	}
-	#tnc {
-		position: absolute;
-		left: 6%;
-		top: 50%;
-		overflow: visible;
-		width: 407px;
-		white-space: nowrap;
-		line-height: 20px;
-		margin-top: -1px;
-		text-align: center;
-		font-family: Helvetica;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 15px;
-		color: rgba(13,2,2,1);
-	}
+
   #Cont {
-		position: absolute;
-		width: 170px;
-		height: 45px;
-		left: 5%;
-		top: 65%;
+		position: relative;
+		width: 120px;
+		height: 40px;
+		left: 50px;
+		top: 20px;
 		overflow: visible;
 	}
 
@@ -210,10 +195,15 @@
   <label class="container">
     <input type="radio" name="radio">
     <span class="checkmark"></span>
+    <label for="radio" style="font-size: 15px;">I have read and i agree to the terms and conditions</label>
   </label>
 </div>
-<div id="tnc">
-  <span>I have read and i agree to the terms and conditions</span>
+<div id="Company_Business_name">
+  <span>Give address of your company</span>
+</div>
+</div>
+<div id="Input_Field">
+  <input type="text" placeholder="building, area, city, state" name="adress">
 </div>
 <div id="Cont">
   <a href="/product">
