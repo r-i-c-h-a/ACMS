@@ -65,7 +65,10 @@
 		top: 30px;
 		overflow: visible;
 	}
+  #hide{
 
+
+}
   #Cont {
 		position: relative;
 		width: 120px;
@@ -177,33 +180,80 @@
 {% endblock %}
 
 {% block body %}
-<div id="Heading">
-  <span>Register and Start Selling</span>
-</div>
-<div id="Subhead">
-  <span>Enter Details Below To Continue Registration</span>
-</div>
-<div id="Company_Business_name">
-  <span>Company/Business name</span>
-</div>
-<form action="/registration" method="POST">
-  <div id="Input_Field">
-    <input type="text" placeholder="company name" name="cname">
+
+<div class="columns">
+  <div class="column is-half">
+    <div id="Heading">
+      <span>Register and Start Selling</span>
+    </div>
+    <div id="Subhead">
+      <span>Enter Details Below To Continue Registration</span>
+    </div>
+    <div id="Company_Business_name">
+      <span>Company/Business name</span>
+    </div>
+    <form action="/registration" method="POST">
+      <div id="Input_Field">
+        <input type="text" placeholder="company name" name="cname">
+      </div>
+    </form>
+    <div id="Radio_Button">
+      <label class="container">
+        <input type="radio" name="radio">
+        <span class="checkmark"></span>
+        <label for="radio" style="font-size: 15px;">I have read and i agree to the terms and conditions</label>
+      </label>
+    </div>
+    <div id="Company_Business_name">
+      <span>Give address of your company</span>
+    </div>
+    <form action="" method="POST">
+      <div id="Input_Field">
+        <input type="text" placeholder="building, area, city, state" name="adress">
+      </div>
+    </form>
   </div>
-</form>
-<div id="Radio_Button">
-  <label class="container">
-    <input type="radio" name="radio">
-    <span class="checkmark"></span>
-    <label for="radio" style="font-size: 15px;">I have read and i agree to the terms and conditions</label>
-  </label>
-</div>
-<div id="Company_Business_name">
-  <span>Give address of your company</span>
-</div>
-</div>
-<div id="Input_Field">
-  <input type="text" placeholder="building, area, city, state" name="adress">
+  <div class="column">
+    <div id="Heading">
+      <span>Update your Tax details</span>
+    </div>
+    <div id="Radio_Button">
+      <label class="container">
+        <input type="radio" name="radio">
+        <span class="checkmark"></span>
+        <label for="radio" style="font-size: 15px;">I have GST number</label>
+      </label>
+    </div>
+    <div id="hide" hidden>
+      <div id="Company_Business_name">
+        <span>GST Number</span>
+      </div>
+      <form action="" method="POST">
+        <div id="Input_Field">
+          <input type="text" placeholder="building, area, city, state" name="adress">
+        </div>
+      </form>
+      <div id="Company_Business_name">
+        <span>PAN Number</span>
+      </div>
+      <form action="" method="POST">
+        <div id="Input_Field">
+          <input type="text" placeholder="building, area, city, state" name="adress">
+        </div>
+      </form>
+      <div id="Radio_Button">
+        <input type="checkbox" name="other">
+        <label for="other">My Product is not present in the category</label>
+      </div>
+    </div>
+    <div id="Radio_Button">
+      <label class="container">
+        <input type="radio" name="radio">
+        <span class="checkmark"></span>
+        <label for="radio" style="font-size: 15px;">I have never Registered for GST</label>
+      </label>
+    </div>
+  </div>
 </div>
 <div id="Cont">
   <a href="/product">
