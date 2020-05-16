@@ -62,7 +62,7 @@
 		width: 120px;
 		height: 40px;
 		left: 50px;
-		top: 20px;
+		top: 30px;
 		overflow: visible;
 	}
   #tnc {
@@ -81,6 +81,14 @@
 		font-size: 15px;
 		color: rgba(13,2,2,1);
 	}
+  #Input_Field {
+    position: relative;
+    width: 400px;
+    height: 65px;
+    left: 50px;
+    top: 30px;
+    overflow: visible;
+  }
   button {
   background-color: #000000;
   color: white;
@@ -190,11 +198,15 @@
 {% endblock %}
 
 {% block body %}
+<ol class="progtrckr" data-progtrckr-steps="5">
+    <li class="progtrckr-done">Company details</li>
+    <li class="progtrckr-done">Tax Details</li>
+    <li class="progtrckr-todo">Product Details</li>
+    <li class="progtrckr-todo">Account details</li>
+    <li class="progtrckr-todo">E-Commerce sites</li>
+</ol>
 <section class="section">
   <div id="Heading">
-    <span>Tell us about your business</span>
-  </div>
-  <div id="Subhead">
     <span>Give us the product details</span>
   </div>
   <div id="Company_Business_name">
@@ -223,16 +235,21 @@
       </select>
   </div>
   <div id="tnc">
-    <input type="checkbox" name="other">
+    <input id="proNot" type="checkbox" name="other" onclick="javascript:yesnoCheck();">
     <label for="other">My Product is not present in the category</label>
+  </div>
+  <div id="hide" style="display:none">
+    <form action="" method="POST">
+      <div id="Input_Field">
+        <input type="text" placeholder="Product Type" name="newProd">
+      </div>
+    </form>
   </div>
   <div id="Cont">
     <a href="/account/list_ecommerce">
       <button type="submit">Continue</button>
     </a>
-  
-
-
+  </div>
 </section>
 
 {% endblock %}
@@ -332,5 +349,12 @@ function closeAllSelect(elmnt) {
 /*if the user clicks anywhere outside the select box,
 then close all select boxes:*/
 document.addEventListener("click", closeAllSelect);
+function yesnoCheck() {
+    if (document.getElementById('proNot').checked) {
+        document.getElementById('hide').style.display = 'block';
+    } else {
+        document.getElementById('hide').style.display = 'none';
+    }
+  }
 </script>
 {% endblock %}
