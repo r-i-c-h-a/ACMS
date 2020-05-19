@@ -54,7 +54,7 @@
     width: 400px;
     height: 65px;
     left: 50px;
-    top: 30px;
+    top: 25px;
     overflow: visible;
   }
   #Cont {
@@ -62,7 +62,7 @@
 		width: 120px;
 		height: 40px;
 		left: 50px;
-		top: 30px;
+		top: 20px;
 		overflow: visible;
 	}
   #tnc {
@@ -74,7 +74,6 @@
     height: 30px;
 		white-space: nowrap;
 		line-height: 20px;
-		margin-top: -1px;
 		font-family: Helvetica;
 		font-style: normal;
 		font-weight: normal;
@@ -167,6 +166,9 @@
 .select-items div:hover, .same-as-selected {
   background-color: rgba(0, 0, 0, 0.1);
 }
+
+
+
 </style>
 
 <div class="navbar-brand">
@@ -203,17 +205,19 @@
     <li class="progtrckr-done">Tax Details</li>
     <li class="progtrckr-todo">Product Details</li>
     <li class="progtrckr-todo">Account details</li>
-    <li class="progtrckr-todo">E-Commerce sites</li>
+    <li class="progtrckr-todo">Sites</li>
 </ol>
 <section class="section">
-  <div id="Heading">
-    <span>Give us the product details</span>
-  </div>
-  <div id="Company_Business_name">
-    <span>Select product category</span>
-  </div>
-  <div class="custom-select" style="width:150px; height:60px">
-    <select name="Prod category">
+  <div class="columns">
+    <div class="column is-half">
+      <div id="Heading">
+        <span>Give us the product details</span>
+      </div>
+      <div id="Company_Business_name">
+        <span>Select product category</span>
+      </div>
+      <div class="custom-select" style="width:150px; height:60px">
+        <select name="Prod category">
 	      <option value="1">Automotive</option>
 	      <option value="2">Baby Products</option>
 	      <option value="3">Beauty</option>
@@ -232,24 +236,64 @@
       	<option value="16">n</option>
       	<option value="17">n</option>
       	<option value="18">n</option>
-      </select>
-  </div>
-  <div id="tnc">
-    <input id="proNot" type="checkbox" name="other" onclick="javascript:yesnoCheck();">
-    <label for="other">My Product is not present in the category</label>
-  </div>
-  <div id="hide" style="display:none">
-    <form action="" method="POST">
-      <div id="Input_Field">
-        <input type="text" placeholder="Product Type" name="newProd">
+        </select>
       </div>
-    </form>
+      <div id="tnc">
+        <input id="proNot" type="checkbox" name="other" onclick="javascript:yesnoCheck();">
+        <label for="other">My Product is not present in the category</label>
+      </div>
+      <div id="hide" style="display:none">
+        <form action="" method="POST">
+          <div id="Input_Field">
+            <input type="text" placeholder="Product Type" name="newProd">
+          </div>
+        </form>
+      </div>
+      <div id="Company_Business_name">
+      </div>
+      <div id="Company_Business_name">
+        <span>Upload Photos of Product</span>
+      </div>
+      <div id="Input_Field">
+        <form action="">
+          <label for="img">Select image:</label>
+          <input type="file" size="60" class="inputImg" name="img" accept="image/*">
+        </form>
+      </div>
+    </div>
+    <div class="column">
+      <div id="Company_Business_name">
+        <span>Enter Quantity</span>
+      </div>
+      <form action="" method="POST">
+        <div id="Input_Field">
+          <input type="number" placeholder="number" name="quant">
+        </div>
+      </form>
+      <div id="Company_Business_name">
+        <span>Enter Price in rupees</span>
+      </div>
+      <form action="" method="POST">
+        <div id="Input_Field">
+          <input type="text" placeholder="price" name="price">
+        </div>
+      </form>
+      <div id="Company_Business_name">
+        <span>Condition of product</span>
+      </div>
+      <form action="" method="POST">
+        <div id="Input_Field">
+          <input type="text" placeholder="Used(no. of years) or New" name="condition">
+        </div>
+      </form>
+      <div id="Cont">
+        <a href="/account/list_ecommerce">
+          <button type="submit">Continue</button>
+        </a>
+      </div>
+    </div>
   </div>
-  <div id="Cont">
-    <a href="/account/list_ecommerce">
-      <button type="submit">Continue</button>
-    </a>
-  </div>
+
 </section>
 
 {% endblock %}

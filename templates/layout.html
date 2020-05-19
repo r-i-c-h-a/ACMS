@@ -79,12 +79,13 @@
         font-size: 1.5em;
         bottom: -1.6em;
     }
+    {% block head %}
+    {% endblock %}
   </style>
-  {% block head %}
-  {% endblock %}
+
 </head>
 <body>
-  <nav class="navbar is-primary" style="background: rgba(2,10,16,0.725)">
+  <nav class="navbar is-dark" style="background: rgba(2,10,16,0.725)">
     {% block header %}
     {% endblock %}
   </nav>
