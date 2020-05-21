@@ -14,13 +14,17 @@
   <div class="form">
 
     <form action="/login" method="POST">
-		<p>Email<input type="text" name="email"></p>
-		<p>Password<input type="password" name="password"></p>
-	  <p><input type="submit" name="signin"></p>
+		<p>Email<input type="text" name="email" id="email"></p>
+		<p>Password<input type="password" name="password" id="password"></p>
+	  <p><input type="submit" id="signin" style="background:#7FFFD4"></p>
     </form>
+    {% if error %}
+      <h3>Wrong Email Id or Password</h3>
+    {% endif %}
 
     <form class="login-form">
       <button type="button" onclick="window.location.href='/registerationForm'">SIGN UP</button>
     </form>
+
   </div>
 </div>
