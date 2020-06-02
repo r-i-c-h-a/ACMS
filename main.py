@@ -245,5 +245,28 @@ def proDet():
     loggedIn, firstName= getLoginDetails()
     return render_template("productDetails.html", firstName=firstName)
 
+
+
+@app.route("/checkout")
+def checkout():
+    if 'email' not in session:
+        return redirect(url_for('loginForm'))
+    loggedIn, firstName, noOfItems = getLoginDetails()
+    email = session['email']
+    with sqlite3.connect('database.db') as conn:
+        cur = conn.cursor()
+        cur.execute("SELECT userId FROM users WHERE email = ?", (email, ))
+        userId = cur.fetchone()[0]
+        cur.execute("SELECT * FROM users WHERE email = ?", (email, ))
+        userInfo = cur.fetchone()
+        cur.execute("SELECT products.productId, products.name, products.price, products.image FROM products, cart WHERE products.productId = cart.productId AND cart.userId = ?", (userId, ))
+        products = cur.fetchall()
+    totalPrice = 0
+    for row in products:
+        totalPrice += row[2]
+    return render_template("checkout.html", products = products, totalPrice=totalPrice, loggedIn=loggedIn, firstName=firstName, noOfItems=noOfItems,userInfo=userInfo)
+
+
+
 if __name__ == '__main__':
     app.run(debug=True,port=4000)
