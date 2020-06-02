@@ -3,6 +3,8 @@ import sqlite3, hashlib, os
 from werkzeug.utils import secure_filename
 import pandas as pd
 import datetime
+from datetime import timedelta
+from flask import session, app
 
 app = Flask(__name__)
 app.secret_key = 'random string'
@@ -21,6 +23,8 @@ def getLoginDetails():
             cur.execute("SELECT userId, firstName FROM users WHERE email = ?", (session['email'], ))
             userId, firstName = cur.fetchone()
     conn.close()
+    session.permanent = True
+    app.permanent_session_lifetime = timedelta(minutes=15)
     return (loggedIn, firstName)
 
 @app.route("/")
